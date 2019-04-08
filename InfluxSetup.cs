@@ -1,5 +1,4 @@
-﻿using ARDesign.Serialize.Utility;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ARDesign.Serialize
 {
@@ -13,14 +12,9 @@ namespace ARDesign.Serialize
         [SerializeField]
         private string db;
 
-        // probably not necessary, but allows for storing the parent deserialized scene config
-        private DBScene baseScene;
-
         // Sets up scene with SBScene object, for use with JSON deserialization
         public void Setup(DBScene sceneToBuild)
         {
-
-            baseScene = sceneToBuild;
             host = sceneToBuild.Host;
             port = int.Parse(sceneToBuild.Port);
             db = sceneToBuild.Db;
@@ -37,7 +31,7 @@ namespace ARDesign.Serialize
 
         public string BuildUrlWithQuery(string query)
         {
-            return JSONHelper.EncodeQuery(host, port.ToString(), false, db, query);
+            return Utility.EncodeQuery(host, port.ToString(), false, db, query);
         }
     }
 }

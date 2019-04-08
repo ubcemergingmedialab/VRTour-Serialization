@@ -10,6 +10,7 @@ namespace ARDesign.Serialize
     // Helper utilities for JSON parsing
     public static class Utility
     {
+        public const string URL = "https://ardesign-config.herokuapp.com/api";
 
         public static string EncodeQuery(string host, string port, bool isPretty, string db, string query)
         {

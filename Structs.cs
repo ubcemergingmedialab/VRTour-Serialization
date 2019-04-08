@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace ARDesign.Serialize {
-	
-	public final string URL = "https://ardesign-config.herokuapp.com/api";
 
     /// <summary>
     /// Struct for storing configuration of a room - designed for deserializing from JSON

@@ -3,8 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ARDesign.Serialize;
-using ARDesign.Serialize.Utility;
 
 namespace ARDesign.Serialize
 {
@@ -60,12 +58,12 @@ namespace ARDesign.Serialize
 
         public new string ToString()
         {
-            return JSONHelper.BuildSceneToString(toBuild);
+            return Utility.BuildSceneToString(toBuild);
         }
 
         public void Test()
         {
-            JSONHelper.BuildSceneToFile(toBuild);
+            Utility.BuildSceneToFile(toBuild);
         }
     }
 }
