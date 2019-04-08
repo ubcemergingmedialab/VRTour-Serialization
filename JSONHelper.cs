@@ -89,5 +89,20 @@ namespace ARDesign.Serialize.Utility
             IList<JToken> vals = results["results"][0]["series"][0]["values"].Children().ToList();
             return vals.Select(val => val[1].ToString()).ToArray<string>();
         }
+
+        public static string BuildSceneToString(DBScene toBuild)
+        {
+            string json = JsonConvert.SerializeObject(toBuild, Formatting.Indented);
+            return json;
+        }
+
+        public static void BuildSceneToFile(DBScene toBuild)
+        {
+            // TODO: Improve date time formatting
+            string curDate = DateTime.Now.ToOADate().ToString();
+            string path = Application.streamingAssetsPath + "/JSON Output/jsonoutput-" + curDate + ".txt";
+            System.IO.File.WriteAllText(path, BuildSceneToString(toBuild));
+        }
+
     }
 }
