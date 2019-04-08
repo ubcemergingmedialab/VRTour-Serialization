@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace ARDesign.Serialize.Utility
+namespace ARDesign.Serialize
 {
     // Helper utilities for JSON parsing
-    public static class JSONHelper
+    public static class Utility
     {
 
         public static string EncodeQuery(string host, string port, bool isPretty, string db, string query)
