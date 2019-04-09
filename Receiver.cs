@@ -9,11 +9,9 @@ namespace ARDesign
     {
         public static class Receiver
         {
-            private const string requestUrl = Utility.URL + "/scenes/";
-
             public static UnityWebRequest GetFromId(string id)
             {
-                return UnityWebRequest.Get(requestUrl + id);
+                return UnityWebRequest.Get(Utility.URL + "/scenes/" + id);
             }
 
         }
