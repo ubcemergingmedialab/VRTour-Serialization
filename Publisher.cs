@@ -9,8 +9,19 @@ namespace ARDesign
 {
     namespace Serialize
     {
+
+        /// <summary>
+        /// Helper functions for sending scene configurations
+        /// </summary>
         public class Publisher
         {
+
+            /// <summary>
+            /// Builds a preconfigured web request for posting a given config, with an optional name
+            /// </summary>
+            /// <param name="name">(Optional) name for configuration</param>
+            /// <param name="json">JSON string with configuration info</param>
+            /// <returns></returns>
             public static UnityWebRequest SendScene(string name, string json)
             {
                 string jsonToPost = name == "" ? PrepPost(json) : PrepPost(json, name);
@@ -28,6 +39,7 @@ namespace ARDesign
                 return www;
             }
 
+            #region PRIVATE_METHODS
             private static string PrepPost(string json, string name_)
             {
                 PostBody toReturn = new PostBody
@@ -54,7 +66,7 @@ namespace ARDesign
             {
                 public JObject config;
             }
-
+            #endregion //PRIVATE_METHODS
         }
     }
 }
