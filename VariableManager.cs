@@ -53,11 +53,15 @@ namespace ARDesign
             /// <param name="h">InfluxDB host address</param>
             /// <param name="p">InfluxDB port number</param>
             /// <param name="d">InfluxDB database name</param>
-            public void SetBaseVals(string h, string p, string d)
+            /// <param name="b">Building name (ie. CIRS)</param>
+            /// <param name="r">Room number</param>
+            public void SetBaseVals(string h, string p, string d, string b, string r)
             {
                 toBuild.Host = h;
                 toBuild.Port = p;
                 toBuild.Db = d;
+                toBuild.Building = b;
+                toBuild.Room = r;
             }
 
 
