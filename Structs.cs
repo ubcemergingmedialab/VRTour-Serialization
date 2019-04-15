@@ -28,7 +28,7 @@ namespace ARDesign
         {
             public Vector3 Position;
             public string Measure;
-            public string[] values;
+            public string[] Values;
         }
 
     }
