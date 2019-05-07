@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-namespace ARDesign
+namespace VRTour
 {
     namespace Serialize
     {
@@ -13,11 +13,13 @@ namespace ARDesign
         {
             public static VariableManager instance = null;
 
+            public int startNode = 0;
+
             #region PRIVATE_MEMBER_VARIABLES
             [SerializeField]
             private bool test = false;
-            private DBScene toBuild;
-            private IList<DBWidget> widgets = null;
+            private Tour toBuild;
+            private IList<Node> nodes = null;
             #endregion //PRIVATE_MEMBER_VARIABLES
 
             #region UNITY_MONOBEHAVIOUR_METHODS
@@ -31,15 +33,14 @@ namespace ARDesign
                 {
                     Destroy(gameObject);
                 }
-
                 DontDestroyOnLoad(this);
             }
             
             // Use this for initialization
             void Start()
             {
-                widgets = new List<DBWidget>();
-                toBuild.Widgets = widgets;
+                nodes = new List<Node>();
+                toBuild.startPoint = nodes[startNode];
 
                 if (test) Test();
             }
@@ -48,42 +49,34 @@ namespace ARDesign
             #region PUBLIC_METHODS
 
             /// <summary>
-            /// Sets the basic database values
+            /// Sets the base tour values
             /// </summary>
-            /// <param name="h">InfluxDB host address</param>
-            /// <param name="p">InfluxDB port number</param>
-            /// <param name="d">InfluxDB database name</param>
-            /// <param name="b">Building name (ie. CIRS)</param>
-            /// <param name="r">Room number</param>
-            public void SetBaseVals(string h, string p, string d, string b, string r)
+            /// <param name="l">label for the tour</param>
+            public void SetBaseVals(string l)
             {
-                toBuild.Host = h;
-                toBuild.Port = p;
-                toBuild.Db = d;
-                toBuild.Building = b;
-                toBuild.Room = r;
+                toBuild.name = l;
             }
 
 
             /// <summary>
-            /// Add a widget to the configuration
+            /// Add a node to the tour
             /// </summary>
-            /// <param name="wid">Preconfigured widget object</param>
-            public void AddWidget(DBWidget wid)
+            /// <param name="n">Preconfigured node</param>
+            public void AddWidget(Node n)
             {
-                if (widgets == null)
+                if (nodes == null)
                 {
-                    widgets = new List<DBWidget>();
+                    nodes = new List<Node>();
                 }
-                widgets.Add(wid);
-                toBuild.Widgets = widgets;
+                nodes.Add(n);
+                toBuild.startPoint = nodes[startNode];
             }
 
 
             /// <summary>
             /// Serialize configuration into a JSON string
             /// </summary>
-            /// <returns>JSON string of a deserialized DBScene</returns>
+            /// <returns>JSON string of a deserialized tour</returns>
             public new string ToString()
             {
                 return Utility.BuildSceneToString(toBuild);

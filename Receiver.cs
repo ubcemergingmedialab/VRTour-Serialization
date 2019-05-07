@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace ARDesign
+namespace VRTour
 {
     namespace Serialize
     {
@@ -21,7 +21,7 @@ namespace ARDesign
             /// <returns>UnityWebRequest pre-configured for fetching configuration from ID</returns>
             public static UnityWebRequest GetFromId(string id)
             {
-                return UnityWebRequest.Get(Utility.URL + "/scenes/" + id);
+                return UnityWebRequest.Get(Utility.URL + "/tours/" + id);
             }
 
         }

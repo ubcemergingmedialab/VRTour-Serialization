@@ -1,34 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace ARDesign
+namespace VRTour
 {
     namespace Serialize
     {
 
         /// <summary>
-        /// Struct for storing configuration of a room - designed for deserializing from JSON
+        /// Struct for storing configuration of a tour space - designed for deserializing from JSON
+        /// \todo - Add way of serializing environment for tour
         /// </summary>
-        public struct DBScene
+        public struct Tour
         {
-            public string Host;
-            public string Port;
-            public string Db;
-            // List of widgets in the room
-            public IList<DBWidget> Widgets;
-
-            public string Building;
-            public string Room;
+            public string name;
+            public Node startPoint; //Initial start node on the tour
         }
 
         /// <summary>
-        /// Struct for storing widget info - Designed for JSON deserialization
+        /// Struct for storing configuration of a tour position - nodes are trees
         /// </summary>
-        public struct DBWidget
+        public struct Node
         {
-            public Vector3 Position;
-            public string Measure;
-            public string[] Values;
+            public int nodeId;
+            public Vector3 position;
+            public Vector3 rotation;
+            public string label; //label represents the question in the choose your own adventure style tour
+            public Destination[] answers;
+        }
+
+        /// <summary>
+        /// Struct for storing configuration of question answers
+        /// </summary>
+        public struct Destination
+        {
+            public string label; //label represents the answer in the choose your own adventure style tour
+            public Node dest; //Node Id for the destination
         }
 
     }

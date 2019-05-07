@@ -1,4 +1,4 @@
 # ARDesign-serialization
-Submodule for serialization pipeline for ARDesign
+Submodule for serialization pipeline for the VR Tour builder
 
-In use as a submodule within [ARDesign](https://github.com/ubcemergingmedialab/ARDesign) and [ARDesign-setup](https://github.com/ubcemergingmedialab/ARDesign-setup)
+In use as a submodule within [VR Tour Builder](https://github.com/ubcemergingmedialab/VRTourBuilder)

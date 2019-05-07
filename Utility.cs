@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using UnityEngine;
-namespace ARDesign
+namespace VRTour
 {
     namespace Serialize
     {
@@ -14,21 +14,21 @@ namespace ARDesign
 
             #region PUBLIC_METHODS
             /// <summary>
-            /// Given a json string, deserializes it into a scene configuration
+            /// Given a json string, deserializes it into a tour configuration
             /// </summary>
             /// <param name="json">JSON string to deserialize</param>
             /// <returns>DBScene object</returns>
-            public static DBScene CreateFromJSON(string json)
+            public static Tour CreateFromJSON(string json)
             {
-                return JsonConvert.DeserializeObject<DBScene>(json);
+                return JsonConvert.DeserializeObject<Tour>(json);
             }
 
             /// <summary>
-            /// Serialize a given scene configuration into human readable JSON
+            /// Serialize a given tour configuration into human readable JSON
             /// </summary>
             /// <param name="toBuild">Scene configuration</param>
             /// <returns>json string</returns>
-            public static string BuildSceneToString(DBScene toBuild)
+            public static string BuildSceneToString(Tour toBuild)
             {
                 string json = JsonConvert.SerializeObject(toBuild, Formatting.Indented);
                 return json;
@@ -37,8 +37,8 @@ namespace ARDesign
             /// <summary>
             /// For testing - serializes a configuration and writes it to a file
             /// </summary>
-            /// <param name="toBuild">Scene configuration</param>
-            public static void BuildSceneToFile(DBScene toBuild)
+            /// <param name="toBuild">Tour configuration</param>
+            public static void BuildSceneToFile(Tour toBuild)
             {
                 // TODO: Improve date time formatting
                 string curDate = DateTime.Now.ToOADate().ToString();
