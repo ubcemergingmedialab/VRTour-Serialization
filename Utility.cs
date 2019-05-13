@@ -28,7 +28,7 @@ namespace VRTour
             /// </summary>
             /// <param name="toBuild">Scene configuration</param>
             /// <returns>json string</returns>
-            public static string BuildSceneToString(Tour toBuild)
+            public static string BuildTourToString(Tour toBuild)
             {
                 string json = JsonConvert.SerializeObject(toBuild, Formatting.Indented);
                 return json;
@@ -38,12 +38,17 @@ namespace VRTour
             /// For testing - serializes a configuration and writes it to a file
             /// </summary>
             /// <param name="toBuild">Tour configuration</param>
-            public static void BuildSceneToFile(Tour toBuild)
+            public static void BuildTourToFile(Tour toBuild)
             {
                 // TODO: Improve date time formatting
                 string curDate = DateTime.Now.ToOADate().ToString();
                 string path = Application.streamingAssetsPath + "/JSON Output/jsonoutput-" + curDate + ".txt";
-                System.IO.File.WriteAllText(path, BuildSceneToString(toBuild));
+                System.IO.File.WriteAllText(path, BuildTourToString(toBuild));
+            }
+
+            internal static void BuildSceneToFile(Tour toBuild)
+            {
+                throw new NotImplementedException();
             }
             #endregion //PUBLIC METHODS
         }

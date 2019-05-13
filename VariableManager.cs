@@ -79,7 +79,7 @@ namespace VRTour
             /// <returns>JSON string of a deserialized tour</returns>
             public new string ToString()
             {
-                return Utility.BuildSceneToString(toBuild);
+                return Utility.BuildTourToString(toBuild);
             }
 
             /// <summary>
