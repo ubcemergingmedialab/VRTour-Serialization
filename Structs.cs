@@ -10,6 +10,7 @@ namespace VRTour
         /// Struct for storing configuration of a tour space - designed for deserializing from JSON
         /// \todo - Add way of serializing environment for tour
         /// </summary>
+        [System.Serializable]
         public struct Tour
         {
             public string name;
@@ -19,6 +20,7 @@ namespace VRTour
         /// <summary>
         /// Struct for storing configuration of a tour position - nodes are trees
         /// </summary>
+        [System.Serializable]
         public struct Node
         {
             public int nodeId;
@@ -31,6 +33,7 @@ namespace VRTour
         /// <summary>
         /// Struct for storing configuration of question answers
         /// </summary>
+        [System.Serializable]
         public struct Destination
         {
             public string label; //label represents the answer in the choose your own adventure style tour

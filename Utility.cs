@@ -10,7 +10,7 @@ namespace VRTour
         /// </summary>
         public static class Utility
         {
-            public const string URL = "https://ardesign-config.herokuapp.com/api";
+            public const string URL = ""; //TODO
 
             #region PUBLIC_METHODS
             /// <summary>

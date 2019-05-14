@@ -7,7 +7,7 @@ namespace VRTour
 
         /// <summary>
         /// Persistent singleton object that stores scene configuration info. 
-        /// ARDesign-setup can be seen as essentially just abstracting building this
+        /// VRTourBuilder can be seen as essentially just abstracting building this
         /// </summary>
         public class VariableManager : MonoBehaviour
         {
