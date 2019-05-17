@@ -14,7 +14,9 @@ namespace VRTour
         public struct Tour
         {
             public string name;
+            public string id;
             public Node startPoint; //Initial start node on the tour
+
         }
 
         /// <summary>
