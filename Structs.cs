@@ -14,13 +14,13 @@ namespace VRTour
         public struct Tour
         {
             public string name;
-            public string id;
-            public Node startPoint; //Initial start node on the tour
+            public int startPoint; //Initial start node on the tour
+            public Node[] nodes;
 
         }
 
         /// <summary>
-        /// Struct for storing configuration of a tour position - nodes are trees
+        /// Struct for storing configuration of a tour position
         /// </summary>
         [System.Serializable]
         public struct Node
@@ -39,7 +39,7 @@ namespace VRTour
         public struct Destination
         {
             public string label; //label represents the answer in the choose your own adventure style tour
-            public Node dest; //Node Id for the destination
+            public int dest; //Node Id for the destination
         }
 
     }

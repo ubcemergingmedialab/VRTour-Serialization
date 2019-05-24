@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 namespace VRTour
 {
@@ -47,9 +48,30 @@ namespace VRTour
                 System.IO.File.WriteAllText(path, BuildTourToString(toBuild));
             }
 
-            internal static void BuildSceneToFile(Tour toBuild)
+            /// <summary>
+            /// Converts an unsorted array of nodes to a dictionary, indexed by node ID. For deserializing
+            /// </summary>
+            /// <param name="nodeArray">Unsorted array of nodes</param>
+            /// <returns>Indexed node dictionary</returns>
+            public static Dictionary<int, Node> BuildDictionaryFromArray(Node[] nodeArray)
             {
-                throw new NotImplementedException();
+                Dictionary<int, Node> toReturn = new Dictionary<int, Node>();
+                foreach (Node n in nodeArray)
+                {
+                    toReturn.Add(n.nodeId, n);
+                }
+                return toReturn;
+            }
+
+            /// <summary>
+            /// Converts a dictionary of nodes to an unsorted array of nodes, helper function for serializing
+            /// </summary>
+            /// <param name="nodeDict">Dictionary of nodes</param>
+            /// <returns>Node Array containing nodeDict.values</returns>
+            public static Node[] BuildArrayFromDict(IDictionary<int, Node> nodeDict)
+            {
+                List<Node> nodes = new List<Node>(nodeDict.Values);
+                return nodes.ToArray();
             }
             #endregion //PUBLIC METHODS
         }

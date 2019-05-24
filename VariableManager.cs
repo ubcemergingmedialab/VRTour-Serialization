@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 namespace VRTour
 {
@@ -15,13 +16,10 @@ namespace VRTour
 
             private IDictionary<int, Node> nodes = null;
 
-            public int startNode = 0;
-
             #region PRIVATE_MEMBER_VARIABLES
             [SerializeField]
             private bool test = false;
-            private Tour toBuild;
-            
+            private Tour toBuild = new Tour();   
             #endregion //PRIVATE_MEMBER_VARIABLES
 
             #region UNITY_MONOBEHAVIOUR_METHODS
@@ -37,17 +35,24 @@ namespace VRTour
                 }
                 DontDestroyOnLoad(this);
             }
-            
+
             // Use this for initialization
             void Start()
             {
                 nodes = new Dictionary<int, Node>();
-
                 if (test) Test();
             }
             #endregion //UNITY_MONOBEHAVIOUR_METHODS
 
             #region PUBLIC_METHODS
+            /// <summary>
+            /// Sets the node array for the tour
+            /// </summary>
+            /// <param name="nodes">Tour nodes</param>
+            public void SetNodes(Node[] nodes)
+            {
+                toBuild.nodes = nodes;
+            }
 
             /// <summary>
             /// Sets the base tour values
@@ -55,7 +60,6 @@ namespace VRTour
             /// <param name="l">label for the tour</param>
             public void SetBaseVals(string l)
             {
-                toBuild = new Tour();
                 toBuild.name = l;
             }
 
@@ -79,8 +83,7 @@ namespace VRTour
             /// <param name="id">Tour start point</param>
             public void SetStartID(int id)
             {
-                startNode = id;
-                toBuild.startPoint = nodes[startNode];
+                toBuild.startPoint = id;
             }
 
 
@@ -108,16 +111,7 @@ namespace VRTour
             /// </summary>
             public void Test()
             {
-                Utility.BuildSceneToFile(toBuild);
-            }
-
-            public void Finalize(IDictionary<int, DestinationPanel> nodesConfig)
-            {
-                int start = startNode;
-                Node n = nodes[start];
-                n.answers = BuildDest(nodesConfig[start], nodesConfig);
-                nodes[start] = n;
-                toBuild.startPoint = nodes[start];
+                Utility.BuildTourToFile(toBuild);
             }
 
             public ICollection<Node> GetNodes()
@@ -127,23 +121,7 @@ namespace VRTour
 
             #endregion //PUBLIC_METHODS
 
-            private Destination[] BuildDest(DestinationPanel dp, IDictionary<int, DestinationPanel> nodesConfig)
-            {
-                Destination[] toReturn = new Destination[dp.answers.Count];
-                for (int i = 0; i < dp.answers.Count; i++)
-                {
-                    Answer a = dp.answers[i];
-                    Node n = nodes[a.GetID()];
-                    n.answers = BuildDest(nodesConfig[a.GetID()], nodesConfig);
-                    toReturn[i] = new Destination
-                    {
-                        label = a.GetLabel(),
-                        dest = n
-                    };
-                }
-
-                return toReturn;
-            }
+            
         }
     }
 }
