@@ -22,10 +22,10 @@ namespace VRTour
             /// <param name="name">(Optional) name for configuration</param>
             /// <param name="json">JSON string with configuration info</param>
             /// <returns></returns>
-            public static UnityWebRequest SendScene(string name, string json)
+            public static UnityWebRequest SendTour(string name, string json)
             {
                 string jsonToPost = name == "" ? PrepPost(json) : PrepPost(json, name);
-                UnityWebRequest www = new UnityWebRequest(Utility.URL + "/scenes");
+                UnityWebRequest www = new UnityWebRequest(Utility.URL + "/tours");
 
                 www.method = UnityWebRequest.kHttpVerbPOST;
                 byte[] bytes = System.Text.Encoding.UTF8.GetBytes(jsonToPost);
