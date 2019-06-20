@@ -12,7 +12,7 @@ namespace VRTour
         public static class Utility
         {
             //TEST URL
-            public const string URL = "http://localhost:3000/api"; //TODO
+            public const string URL = "http://localhost:5000/api/v1"; //TODO
 
             #region PUBLIC_METHODS
             /// <summary>
